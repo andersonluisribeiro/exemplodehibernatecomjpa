@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
   version="2.1">
 
-	<persistence-unit name="clientes" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="loja" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
 		<class></class>
@@ -19,12 +19,11 @@
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-
-			
-			<!--  <property name="hibernate.hbm2ddl.auto" value="update" /> -->
+			<property name="hibernate.format_sql" value="true" />			
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 		</properties>
+		
 	</persistence-unit>
 	
 </persistence>

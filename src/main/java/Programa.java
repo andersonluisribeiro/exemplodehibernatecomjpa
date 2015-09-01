@@ -1,6 +1,3 @@
-
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -9,25 +6,24 @@ public class Programa {
 
 	public static void main(String[] args) {
 		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("clientes");
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("loja");
+		EntityManager entityManager = factory.createEntityManager();
 		
-		entityManager.getTransaction().begin();
-		
-		Laboratorio laboratorio = entityManager.find(Laboratorio.class, 1l);
-		
-		List<Computador> computadores = laboratorio.getComputadores();
-		
-		for(Computador computador: computadores){
-			System.out.println(computador.getMarca());
+		try {
+			
+			entityManager.getTransaction().begin();
+			
+			
+			
+			entityManager.getTransaction().commit();
+			
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+		} finally {
+			entityManager.close();
+			factory.close();
 		}
 		
-		
-		entityManager.getTransaction().commit();
-		
-		entityManager.close();
-		entityManagerFactory.close();
-
 	}
 
 }
